@@ -9,7 +9,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -19,7 +18,7 @@ public class MainActivity extends Activity
 {
     ListView lvMain;
     ArrayList<Item> items;
-    BoxAdapter boxAdapter;
+    CustomAdapter customAdapter;
     Context context;
 
     /** Called when the activity is first created. */
@@ -30,20 +29,19 @@ public class MainActivity extends Activity
 
         context = this;
 
-        ParseXmlColors parser = new ParseXmlColors(this);
+        XmlParser parser = new XmlParser(this);
         items = parser.parse();
 
-        boxAdapter = new BoxAdapter(this, items);
+        customAdapter = new CustomAdapter(this, items);
         lvMain = (ListView) findViewById(R.id.lvMain);
-        lvMain.setAdapter(boxAdapter);
+        lvMain.setAdapter(customAdapter);
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                ChangeSize size = new ChangeSize(context);
-Log.d("onClick","position-> "+position+" id-> "+id);
+                SizeChanger size = new SizeChanger(context);
                 // Проверка в каком состоянии находиться елемент (открытом/закрытом)
                 if(items.get(position).getSize() == -1)
                 {
@@ -53,7 +51,7 @@ Log.d("onClick","position-> "+position+" id-> "+id);
                 }
                 else
                 {
-                    // вызываем функция уменбшения ячейки.
+                    // вызываем функция уменьшения ячейки.
                     size.smaller(Color.parseColor(items.get(position).color_code),Color.parseColor(items.get(0).color_code),view);
                     items.get(position).setSize(-1);
                 }

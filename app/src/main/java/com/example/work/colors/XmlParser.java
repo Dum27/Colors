@@ -11,12 +11,12 @@ import java.util.ArrayList;
 /**
  * Created by Work on 06.06.2015.
  */
-public class ParseXmlColors
+public class XmlParser
 {
     ArrayList<Item>items;
     Context context;
 
-    public ParseXmlColors(Context context)
+    public XmlParser(Context context)
     {
         this.context = context;
         items = new ArrayList<Item>();

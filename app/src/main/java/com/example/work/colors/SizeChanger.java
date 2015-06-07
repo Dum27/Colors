@@ -15,11 +15,11 @@ import android.widget.TextView;
 /**
  * Created by Work on 07.06.2015.
  */
-public class ChangeSize
+public class SizeChanger
 {
     Context context;
 
-    public ChangeSize(Context context)
+    public SizeChanger(Context context)
     {
         this.context = context;
     }
@@ -31,7 +31,6 @@ public class ChangeSize
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
         objectAnimator.setDuration(2000);
         objectAnimator.start();
-
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
 
         Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);

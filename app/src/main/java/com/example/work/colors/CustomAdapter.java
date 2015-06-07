@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class BoxAdapter extends BaseAdapter
+public class CustomAdapter extends BaseAdapter
 {
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<Item> objects;
 
-    BoxAdapter(Context context, ArrayList<Item> products)
+    CustomAdapter(Context context, ArrayList<Item> products)
     {
         ctx = context;
         objects = products;
