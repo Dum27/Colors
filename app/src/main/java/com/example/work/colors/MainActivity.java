@@ -3,22 +3,16 @@
 
 package com.example.work.colors;
 
-import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.LightingColorFilter;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends Activity
@@ -27,8 +21,6 @@ public class MainActivity extends Activity
     ArrayList<Item> items;
     BoxAdapter boxAdapter;
     Context context;
-    Item item;
-
 
     /** Called when the activity is first created. */
     public void onCreate(Bundle savedInstanceState)
@@ -51,14 +43,17 @@ public class MainActivity extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 ChangeSize size = new ChangeSize(context);
-                //if(items.get(position).getSize() == -1)
+Log.d("onClick","position-> "+position+" id-> "+id);
+                // Проверка в каком состоянии находиться елемент (открытом/закрытом)
                 if(items.get(position).getSize() == -1)
                 {
+                    // вызываем функция увеличения ячейки и передаем ей view и цвет.
                     size.bigger(Color.parseColor(items.get(position).color_code),view);
                     items.get(position).setSize(1);
                 }
                 else
                 {
+                    // вызываем функция уменбшения ячейки.
                     size.smaller(Color.parseColor(items.get(position).color_code),Color.parseColor(items.get(0).color_code),view);
                     items.get(position).setSize(-1);
                 }

@@ -8,6 +8,7 @@ import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class ChangeSize
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+
     public void bigger(int background_color, View view)
     {
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
@@ -31,8 +33,8 @@ public class ChangeSize
         objectAnimator.start();
 
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
-        Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
 
+        Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
         ColorFilter filter = new LightingColorFilter(background_color,background_color);
         rect.setColorFilter(filter);
         ((TextView)view.findViewById(R.id.tv_color)).setBackground(rect);
