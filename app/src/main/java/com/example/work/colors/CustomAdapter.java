@@ -7,27 +7,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter
 {
     Context ctx;
     LayoutInflater lInflater;
-    ArrayList<Item> objects;
+    ArrayList<Item> items;
 
-    CustomAdapter(Context context, ArrayList<Item> products)
+    CustomAdapter(Context context, ArrayList<Item> items)
     {
-        ctx = context;
-        objects = products;
+        this.ctx = context;
+        this.items = items;
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
      //кол-во элементов
-     @Override public int getCount() {return objects.size();}
+     @Override public int getCount() {return items.size();}
 
      // элемент по позиции
-     @Override public Object getItem(int position) {return objects.get(position);}
+     @Override public Object getItem(int position) {return items.get(position);}
 
      //id по позиции
      @Override public long getItemId(int position) {return position;}
@@ -35,6 +34,7 @@ public class CustomAdapter extends BaseAdapter
 
      @Override public View getView(int position, View convertView, ViewGroup parent)
      {
+         SizeChanger sc = new SizeChanger(ctx);
          View view = convertView;
 
          view = lInflater.inflate(R.layout.item, parent, false);
@@ -43,7 +43,15 @@ public class CustomAdapter extends BaseAdapter
          // заполняем View в пункте списка данными.
          ((TextView) view.findViewById(R.id.tv_color)).setText(i.color_name);
          ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(i.color_code));
+         if (items.get(position).getSize() == 1)
+         {
+             sc.biggerQuickly(Color.parseColor(items.get(position).color_code), view);
+         } else
+         {
+             sc.biggerLittle(Color.parseColor(items.get(position).color_code), Color.parseColor(items.get(0).color_code), view);
+         }
          return view;
+
      }
     // ячейка по позиции
     Item getProduct(int position)

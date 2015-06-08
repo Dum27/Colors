@@ -10,7 +10,6 @@
         <color name="Dark blue"   color="#FF0099CC"/>
         <color name="Dark purple" color="#FF9933CC"/>
         <color name="Lime"        color="#FF669900"/>
-
         <color name="White"       color="#FFFFFF"/>
         <color name="Dark green"  color="#ff3d700d"/>
         <color name="Gray"        color="#696969"/>
@@ -20,8 +19,7 @@
         <color name="Red"         color="#FFFF4444"/>
         <color name="Dark blue"   color="#FF0099CC"/>
         <color name="Dark purple" color="#FF9933CC"/>
-        <color name="Lime"  color="#FF669900"/>
-
+        <color name="Lime"        color="#FF669900"/>
         <color name="White"       color="#FFFFFF"/>
         <color name="Dark green"  color="#ff3d700d"/>
         <color name="Gray"        color="#696969"/>

@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends Activity
@@ -42,14 +41,18 @@ public class MainActivity extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SizeChanger size = new SizeChanger(context);
                 // ѕроверка в каком состо€нии находитьс€ елемент (открытом/закрытом)
-                if (items.get(position).getSize() == -1) {
+                if (items.get(position).getSize() == -1)
+                {
                     // вызываем функци€ увеличени€ €чейки и передаем ей view и цвет.
-                    size.bigger(Color.parseColor(items.get(position).color_code), view);
+                    size.biggerSlow(Color.parseColor(items.get(position).color_code), view);
                     items.get(position).setSize(1);
-                } else {
+                    customAdapter.items.get(position).setSize(1);
+                } else
+                {
                     // вызываем функци€ уменьшени€ €чейки.
                     size.smaller(Color.parseColor(items.get(position).color_code), Color.parseColor(items.get(0).color_code), view);
                     items.get(position).setSize(-1);
+                    customAdapter.items.get(position).setSize(-1);
                 }
             }
         });
