@@ -5,17 +5,17 @@ package com.example.work.colors;
  */
 public class Cell
 {
-    String color_name; // Название цвета
-    String color_code; // RGB код цвета
-    private int size = -1; // переменная для определения состояния елемента ListView (+1 развернут/ -1 свернут)
+    private String colorName; // Color name
+    private String colorCode; // RGB color code
+    private int size = -1;     // Variable to determine the state of item in ListView (+1 Show / -1 minimized)
 
     public Cell() {}
 
-    public Cell(String color_name, String color_code)
-    {
-        this.color_name = color_name;
-        this.color_code = color_code;
-    }
     public void setSize(int size){this.size = size;}
+    public void setColorName(String colorName){this.colorName = colorName;}
+    public void setColorCode(String colorCode){this.colorCode = colorCode;}
+
+    public String getColorName(){return colorName;}
+    public String getColorCode(){return colorCode;}
     public int getSize(){return size;}
 }

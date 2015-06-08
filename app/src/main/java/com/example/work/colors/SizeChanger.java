@@ -15,7 +15,7 @@ import android.widget.TextView;
  * Created by Work on 07.06.2015.*
  */
 
-// Класc выполняет функцию изменения размеров компонентов ListView
+// Class of resizing components of ListView
 public class SizeChanger
 {
     Context context;
@@ -24,7 +24,7 @@ public class SizeChanger
         this.context = context;
     }
 
-    // используется для увеличения компонента ListView при клике
+    // Increase component ListView by clicking
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void biggerSlow(int background_color, View view)
     {
@@ -36,30 +36,30 @@ public class SizeChanger
         Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
         ColorFilter filter = new LightingColorFilter(background_color,background_color);
         rect.setColorFilter(filter);
-        ((TextView)view.findViewById(R.id.tv_color)).setBackground(rect);
+        (view.findViewById(R.id.tv_color)).setBackground(rect);
     }
-    // используется в перерисовки компонентов ListView при скроллинге...
+    // Used in redrawing components ListView when scrolling ...
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void biggerQuickly(int background_color, View view)
     {
-        // C помощью ObjectAnimator увеличиваем TextView и меняем в нем цвет текста
+        // ObjectAnimator was increasing  TextView and change the color of text in it
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
         objectAnimator.setDuration(1);
         objectAnimator.start();
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
 
-        // Добавляем прямоугольнику ColorFilter и ставим его на фон TextView
+        // puts in rectangle ColorFilter and put it on the background TextView
         Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
         ColorFilter filter = new LightingColorFilter(background_color,background_color);
         rect.setColorFilter(filter);
-        ((TextView)view.findViewById(R.id.tv_color)).setBackground(rect);
+        (view.findViewById(R.id.tv_color)).setBackground(rect);
     }
-    // используется для уменьшения компонента ListView при повторном клике
+    // used to reduce component ListView when clicked again
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void smaller(int background_color, int txt_color, View view)
     {
-        // приводим цвет и размер к исходному состоянию
-        ((TextView) view.findViewById(R.id.tv_color)).setBackground(context.getResources().getDrawable(R.drawable.rectangle));
+        // give color and size to the original state
+        (view.findViewById(R.id.tv_color)).setBackground(context.getResources().getDrawable(R.drawable.rectangle));
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(background_color);
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",0);

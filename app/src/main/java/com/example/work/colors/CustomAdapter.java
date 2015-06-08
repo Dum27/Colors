@@ -11,49 +11,47 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends BaseAdapter
 {
-    Context ctx;
+    Context context;
     LayoutInflater lInflater;
-    ArrayList<Cell> items;
-    SizeChanger sc;
+    ArrayList<Cell> itemsAr;
+    SizeChanger sizeChenger;
 
-    CustomAdapter(Context context, ArrayList<Cell> items)
+    CustomAdapter(Context context, ArrayList<Cell> itemsAr)
     {
-        this.ctx = context;
-        this.items = items;
-        sc = new SizeChanger(ctx);
-        lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context;
+        this.itemsAr = itemsAr;
+        sizeChenger = new SizeChanger(context);
+        lInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-     //кол-во элементов
-     @Override public int getCount() {return items.size();}
+     // count of elements
+     @Override public int getCount() {return itemsAr.size();}
 
-     // элемент по позиции
-     @Override public Object getItem(int position) {return items.get(position);}
+     // element in position
+     @Override public Object getItem(int position) {return itemsAr.get(position);}
 
-     //id по позиции
+     // id in position
      @Override public long getItemId(int position) {return position;}
 
-
+    // filling and return view
      @Override public View getView(int position, View convertView, ViewGroup parent)
      {
          View view = convertView;
-
          view = lInflater.inflate(R.layout.item, parent, false);
          Cell c = getProduct(position);
 
-         // заполняем View в пункте списка данными.
-         ((TextView) view.findViewById(R.id.tv_color)).setText(c.color_name);
-         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(c.color_code));
+         ((TextView) view.findViewById(R.id.tv_color)).setText(c.getColorName());
+         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(c.getColorCode()));
 
-         // проверка в каком состоянии находится позиция (развернутом или свернутом)
-         if (items.get(position).getSize() == 1)
+         // check the condition of the position ( expanded or collapsed )
+         if (itemsAr.get(position).getSize() == 1)
          {
-             sc.biggerQuickly(Color.parseColor(items.get(position).color_code), view);
+             sizeChenger.biggerQuickly(Color.parseColor(itemsAr.get(position).getColorCode()), view);
          }
          return view;
 
      }
-    // ячейка по позиции
+    // item in position
     Cell getProduct(int position)
     {
         return ((Cell) getItem(position));

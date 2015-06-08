@@ -1,5 +1,3 @@
-// http://developer.alexanderklimov.ru/android/theory/shape.php figures
-// http://stackoverflow.com/questions/10138156/set-drawable-listview-background-per-item
 
 package com.example.work.colors;
 
@@ -17,7 +15,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity
 {
     ListView lvMain;
-    ArrayList<Cell> items;
+    ArrayList<Cell> itemsAr;
     CustomAdapter customAdapter;
     Context context;
 
@@ -28,29 +26,30 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
         context = this;
         XmlParser parser = new XmlParser(this);
-        items = parser.parse();
+        itemsAr = parser.parse();
 
-        customAdapter = new CustomAdapter(this, items);
+        customAdapter = new CustomAdapter(this, itemsAr);
         lvMain = (ListView) findViewById(R.id.lvMain);
         lvMain.setAdapter(customAdapter);
+
         lvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SizeChanger size = new SizeChanger(context);
-                // ѕроверка в каком состо€нии находитьс€ елемент (открытом/закрытом)
-                if (items.get(position).getSize() == -1)
+                // Check the condition of the element ( open / closed )
+                if (itemsAr.get(position).getSize() == -1)
                 {
-                    // вызываем функци€ увеличени€ €чейки и передаем ей view и цвет.
-                    size.biggerSlow(Color.parseColor(items.get(position).color_code), view);
-                    items.get(position).setSize(1);
-                    customAdapter.items.get(position).setSize(1);
+                    // Call the zoom function of the cell and pass it the view and color.
+                    size.biggerSlow(Color.parseColor(itemsAr.get(position).getColorCode()), view);
+                    itemsAr.get(position).setSize(1);
+                    customAdapter.itemsAr.get(position).setSize(1);
                 } else
                 {
-                    // вызываем функци€ уменьшени€ €чейки.
-                    size.smaller(Color.parseColor(items.get(position).color_code), Color.parseColor(items.get(0).color_code), view);
-                    items.get(position).setSize(-1);
-                    customAdapter.items.get(position).setSize(-1);
+                    // Call functions reduce cell.
+                    size.smaller(Color.parseColor(itemsAr.get(position).getColorCode()), Color.parseColor(itemsAr.get(0).getColorCode()), view);
+                    itemsAr.get(position).setSize(-1);
+                    customAdapter.itemsAr.get(position).setSize(-1);
                 }
             }
         });
