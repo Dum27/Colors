@@ -23,31 +23,27 @@ public class CustomAdapter extends BaseAdapter
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-     // кол-во элементов
+     //кол-во элементов
      @Override public int getCount() {return objects.size();}
 
      // элемент по позиции
      @Override public Object getItem(int position) {return objects.get(position);}
 
      //id по позиции
-     @Override public long getItemId(int position) {
-        return position;
-    }
+     @Override public long getItemId(int position) {return position;}
 
 
-     @Override public View getView(int position, View convertView, ViewGroup parent) // пункт списка
+     @Override public View getView(int position, View convertView, ViewGroup parent)
      {
-        // используем созданные, но не используемые view
-        View view = convertView;
-        if (view == null)
-        {
-            view = lInflater.inflate(R.layout.item, parent, false);
-        }
-        Item i = getProduct(position);
-        // заполняем View в пункте списка данными.
-        ((TextView) view.findViewById(R.id.tv_color)).setText(i.color_name);
-        ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(i.color_code));
-        return view;
+         View view = convertView;
+
+         view = lInflater.inflate(R.layout.item, parent, false);
+         Item i = getProduct(position);
+
+         // заполняем View в пункте списка данными.
+         ((TextView) view.findViewById(R.id.tv_color)).setText(i.color_name);
+         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(i.color_code));
+         return view;
      }
     // ячейка по позиции
     Item getProduct(int position)

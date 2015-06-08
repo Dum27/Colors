@@ -8,7 +8,6 @@ import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +28,7 @@ public class SizeChanger
     public void bigger(int background_color, View view)
     {
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
-        objectAnimator.setDuration(2000);
+        objectAnimator.setDuration(1000);
         objectAnimator.start();
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
 
@@ -45,7 +44,7 @@ public class SizeChanger
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(background_color);
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",0);
-        objectAnimator.setDuration(1500);
+        objectAnimator.setDuration(1000);
         objectAnimator.start();
     }
 }
