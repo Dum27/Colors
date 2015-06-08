@@ -14,11 +14,13 @@ public class CustomAdapter extends BaseAdapter
     Context ctx;
     LayoutInflater lInflater;
     ArrayList<Item> items;
+    SizeChanger sc;
 
     CustomAdapter(Context context, ArrayList<Item> items)
     {
         this.ctx = context;
         this.items = items;
+        sc = new SizeChanger(ctx);
         lInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -34,7 +36,6 @@ public class CustomAdapter extends BaseAdapter
 
      @Override public View getView(int position, View convertView, ViewGroup parent)
      {
-         SizeChanger sc = new SizeChanger(ctx);
          View view = convertView;
 
          view = lInflater.inflate(R.layout.item, parent, false);
@@ -43,12 +44,10 @@ public class CustomAdapter extends BaseAdapter
          // заполняем View в пункте списка данными.
          ((TextView) view.findViewById(R.id.tv_color)).setText(i.color_name);
          ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(i.color_code));
+
          if (items.get(position).getSize() == 1)
          {
              sc.biggerQuickly(Color.parseColor(items.get(position).color_code), view);
-         } else
-         {
-             sc.biggerLittle(Color.parseColor(items.get(position).color_code), Color.parseColor(items.get(0).color_code), view);
          }
          return view;
 
