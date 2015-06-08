@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity
 {
     ListView lvMain;
-    ArrayList<Item> items;
+    ArrayList<Cell> items;
     CustomAdapter customAdapter;
     Context context;
 
@@ -26,9 +26,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         context = this;
-
         XmlParser parser = new XmlParser(this);
         items = parser.parse();
 

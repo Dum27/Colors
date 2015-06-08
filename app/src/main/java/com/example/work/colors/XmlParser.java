@@ -13,21 +13,21 @@ import java.util.ArrayList;
  */
 public class XmlParser
 {
-    ArrayList<Item>items;
+    ArrayList<Cell>items;
     Context context;
 
     public XmlParser(Context context)
     {
         this.context = context;
-        items = new ArrayList<Item>();
+        items = new ArrayList<Cell>();
     }
 
-    public ArrayList<Item> parse()
+    public ArrayList<Cell> parse()
     {
         try {
             XmlPullParser xpp=context.getResources().getXml(R.xml.color_data);
             while (xpp.getEventType()!=XmlPullParser.END_DOCUMENT) {
-                Item item = new Item();
+                Cell item = new Cell();
                 if (xpp.getEventType()==XmlPullParser.START_TAG) {
                     if (xpp.getName().equals("color"))
                     {

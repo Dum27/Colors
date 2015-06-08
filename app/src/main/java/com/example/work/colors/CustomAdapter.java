@@ -13,10 +13,10 @@ public class CustomAdapter extends BaseAdapter
 {
     Context ctx;
     LayoutInflater lInflater;
-    ArrayList<Item> items;
+    ArrayList<Cell> items;
     SizeChanger sc;
 
-    CustomAdapter(Context context, ArrayList<Item> items)
+    CustomAdapter(Context context, ArrayList<Cell> items)
     {
         this.ctx = context;
         this.items = items;
@@ -39,12 +39,13 @@ public class CustomAdapter extends BaseAdapter
          View view = convertView;
 
          view = lInflater.inflate(R.layout.item, parent, false);
-         Item i = getProduct(position);
+         Cell c = getProduct(position);
 
          // заполняем View в пункте списка данными.
-         ((TextView) view.findViewById(R.id.tv_color)).setText(i.color_name);
-         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(i.color_code));
+         ((TextView) view.findViewById(R.id.tv_color)).setText(c.color_name);
+         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(c.color_code));
 
+         // проверка в каком состоянии находится позиция (развернутом или свернутом)
          if (items.get(position).getSize() == 1)
          {
              sc.biggerQuickly(Color.parseColor(items.get(position).color_code), view);
@@ -53,8 +54,8 @@ public class CustomAdapter extends BaseAdapter
 
      }
     // ячейка по позиции
-    Item getProduct(int position)
+    Cell getProduct(int position)
     {
-        return ((Item) getItem(position));
+        return ((Cell) getItem(position));
     }
 }
