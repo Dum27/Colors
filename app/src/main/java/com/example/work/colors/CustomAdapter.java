@@ -2,6 +2,7 @@ package com.example.work.colors;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ public class CustomAdapter extends BaseAdapter
     LayoutInflater lInflater;
     ArrayList<Cell> itemsAr;
     SizeChanger sizeChenger;
+    String fontPath = "fonts/Contribute_FREE-version.ttf";
 
     CustomAdapter(Context context, ArrayList<Cell> itemsAr)
     {
@@ -39,9 +41,13 @@ public class CustomAdapter extends BaseAdapter
          View view = convertView;
          view = lInflater.inflate(R.layout.item, parent, false);
          Cell c = getProduct(position);
-
-         ((TextView) view.findViewById(R.id.tv_color)).setText(c.getColorName());
-         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor(c.getColorCode()));
+         TextView tvColor = (TextView) view.findViewById(R.id.tv_color);
+         // Font Face
+         Typeface typeface = Typeface.createFromAsset(context.getAssets(), fontPath);
+         // Applying font
+         tvColor.setTypeface(typeface);
+         tvColor.setText(c.getColorName());
+         tvColor.setTextColor(Color.parseColor(c.getColorCode()));
 
          // check the condition of the position ( expanded or collapsed )
          if (itemsAr.get(position).getSize() == 1)
