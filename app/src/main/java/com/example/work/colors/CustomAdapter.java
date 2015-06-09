@@ -38,10 +38,10 @@ public class CustomAdapter extends BaseAdapter
     // filling and return view
      @Override public View getView(int position, View convertView, ViewGroup parent)
      {
-         View view = convertView;
-         view = lInflater.inflate(R.layout.item, parent, false);
+         convertView = lInflater.inflate(R.layout.item, parent, false);
+
          Cell c = getProduct(position);
-         TextView tvColor = (TextView) view.findViewById(R.id.tv_color);
+         TextView tvColor = (TextView) convertView.findViewById(R.id.tv_color);
          // Font Face
          Typeface typeface = Typeface.createFromAsset(context.getAssets(), fontPath);
          // Applying font
@@ -52,9 +52,9 @@ public class CustomAdapter extends BaseAdapter
          // check the condition of the position ( expanded or collapsed )
          if (itemsAr.get(position).getSize() == 1)
          {
-             sizeChenger.biggerQuickly(Color.parseColor(itemsAr.get(position).getColorCode()), view);
+             sizeChenger.biggerQuickly(Color.parseColor(itemsAr.get(position).getColorCode()), convertView);
          }
-         return view;
+         return convertView;
 
      }
     // item in position

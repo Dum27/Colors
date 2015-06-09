@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="activityBackground" type="color">#FFFFFF</item>
     <item name="white" type="color">#FFFFFF</item>
     <item name="lightGray" type="color">#D3D3D3</item>
     <item name="blue" type="color">#FF33B5E5</item>
@@ -14,6 +15,7 @@
     <item name="darkred" type="color">#FFCC0000</item>
 
     <integer-array name="androidcolors">
+    <item>@color/activityBackground</item>
     <item>@color/white</item>
     <item>@color/lightGray</item>
     <item>@color/blue</item>
