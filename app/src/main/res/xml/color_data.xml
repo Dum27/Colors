@@ -15,11 +15,10 @@
   <color name="Navy"    color="#000080"/>
   <color name="Sienna"  color="#A0522D"/>
   <color name="Orange"  color="#FF4500"/>
+  <color name="Magenta" color="#FF00FF"/>
   <color name="Green"   color="#ff3d700d"/>
   <color name="Blue"    color="#FF33B5E5"/>
   <color name="Gray"    color="#696969"/>
   <color name="Purple"  color="#FFAA66CC"/>
   <color name="Magenta" color="#FF00FF"/>
-  <color name="Red"     color="#FFFF4444"/>
-  <color name="Lime"    color="#FF669900"/>
 </colors>

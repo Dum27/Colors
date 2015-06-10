@@ -1,13 +1,11 @@
 package com.example.work.colors;
 
-/**
- * Created by Work on 06.06.2015.
- */
+
 public class Cell
 {
     private String colorName; // Color name
     private String colorCode; // RGB color code
-    private int size = -1;     // Variable to determine the state of item in ListView (+1 Show / -1 minimized)
+    private int size = -1;    // Variable to determine the state of item in ListView (+1 Show / -1 minimized)
 
     public Cell() {}
 

@@ -31,8 +31,8 @@ public class XmlParser
                 if (xpp.getEventType()==XmlPullParser.START_TAG) {
                     if (xpp.getName().equals("color"))
                     {
-                        item.setColorName(xpp.getAttributeValue(0));
-                        item.setColorCode(xpp.getAttributeValue(1));
+                        item.setColorName(xpp.getAttributeValue(null,"name"));
+                        item.setColorCode(xpp.getAttributeValue(null,"color"));
                         items.add(item);
                     }
                 }

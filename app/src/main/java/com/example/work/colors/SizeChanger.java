@@ -3,11 +3,11 @@ package com.example.work.colors;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -19,16 +19,18 @@ import android.widget.TextView;
 public class SizeChanger
 {
     Context context;
+    int biggerSize;
     public SizeChanger(Context context)
     {
         this.context = context;
+        biggerSize = context.getResources().getDimensionPixelSize(R.dimen.biggerSize);
     }
 
     // Increase component ListView by clicking
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void biggerSlow(int background_color, View view)
     {
-        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",biggerSize);
         objectAnimator.setDuration(1000);
         objectAnimator.start();
         ((TextView) view.findViewById(R.id.tv_color)).setTextColor(context.getResources().getColor(R.color.lightGray));
@@ -43,10 +45,11 @@ public class SizeChanger
     public void biggerQuickly(int background_color, View view)
     {
         // ObjectAnimator was increasing  TextView and change the color of text in it
-        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
+        Log.d("SIZE", String.valueOf(biggerSize));
+        ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",biggerSize);
         objectAnimator.setDuration(1);
         objectAnimator.start();
-        ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
+        ((TextView) view.findViewById(R.id.tv_color)).setTextColor((context.getResources().getColor(R.color.lightGray)));
 
         // puts in rectangle ColorFilter and put it on the background TextView
         Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
