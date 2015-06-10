@@ -31,7 +31,7 @@ public class SizeChanger
         ObjectAnimator objectAnimator = ObjectAnimator.ofInt(view.findViewById(R.id.tv_color),"minimumHeight",300);
         objectAnimator.setDuration(1000);
         objectAnimator.start();
-        ((TextView) view.findViewById(R.id.tv_color)).setTextColor(Color.parseColor("#D3D3D3"));
+        ((TextView) view.findViewById(R.id.tv_color)).setTextColor(context.getResources().getColor(R.color.lightGray));
 
         Drawable rect = context.getResources().getDrawable(R.drawable.rectangle);
         ColorFilter filter = new LightingColorFilter(background_color,background_color);
