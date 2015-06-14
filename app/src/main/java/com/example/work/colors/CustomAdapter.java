@@ -40,10 +40,9 @@ public class CustomAdapter extends BaseAdapter
      {
          // now we using old view if he don't equals null.
          // But if we use more then twenty colors, would be better re inflate view (delete this checking)
-         if(convertView==null)
-         {
+
              convertView = lInflater.inflate(R.layout.item, parent, false);
-         }
+
 
          Cell c = getProduct(position);
 

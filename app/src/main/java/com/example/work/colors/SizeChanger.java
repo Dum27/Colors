@@ -27,6 +27,8 @@ public class SizeChanger
     }
 
     // Increase component ListView by clicking
+
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void biggerSlow(int background_color, View view)
     {
@@ -41,6 +43,7 @@ public class SizeChanger
         (view.findViewById(R.id.tv_color)).setBackground(rect);
     }
     // Used in redrawing components ListView when scrolling ...
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void biggerQuickly(int background_color, View view)
     {
@@ -58,6 +61,7 @@ public class SizeChanger
         (view.findViewById(R.id.tv_color)).setBackground(rect);
     }
     // used to reduce component ListView when clicked again
+
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public void smaller(int background_color, int txt_color, View view)
     {
